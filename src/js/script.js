@@ -6,13 +6,22 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // scene
-const scene = new THREE.scene();
+const scene = new THREE.Scene();
 
 // camera: perspective
 const camera = new THREE.PerspectiveCamera(
     75,
-    windwo.innerWidth / window.innerHeight,
+    window.innerWidth / window.innerHeight,
     0.1,
     1000
-)
+);
+
+// axes helper
+const axesHelper = new THREE.AxesHelper(3);
+scene.add(axesHelper);
+
+camera.position.set(0, 2, 5);
+
+// linking scene and camera
+renderer.render(scene, camera);
 
