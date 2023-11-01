@@ -29,7 +29,7 @@ orbit.update();
 
 // plane
 const planeGeometry = new THREE.PlaneGeometry(5, 5);
-const planeMaterial = new THREE.MeshBasicMaterial({
+const planeMaterial = new THREE.MeshStandardMaterial({
     color: 0xFFFFFF,
     side: THREE.DoubleSide
 });
@@ -39,13 +39,22 @@ plane.rotation.x = -0.5*Math.PI;
 
 // box
 const boxGeometry = new THREE.BoxGeometry();
-const boxMaterial = new THREE.MeshBasicMaterial({color: 0x00FF00});
+const boxMaterial = new THREE.MeshStandardMaterial({color: 0x00FF00});
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
 box.position.y = 1.5;
 
+// grid helper
 const gridHelper = new THREE.GridHelper();
 scene.add(gridHelper);
+
+// scene lighting: ambient
+const ambientLight = new THREE.AmbientLight(0x333333);
+scene.add(ambientLight);
+
+// directional light
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0x8);
+scene.add(directionalLight);
 
 // dat.gui
 const gui = new dat.GUI();
