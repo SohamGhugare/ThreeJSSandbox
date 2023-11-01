@@ -4,6 +4,7 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 
 // renderer
 const renderer = new THREE.WebGLRenderer();
+renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -37,12 +38,16 @@ const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 scene.add(plane)
 plane.rotation.x = -0.5*Math.PI;
 
+plane.receiveShadow = true
+
 // box
 const boxGeometry = new THREE.BoxGeometry();
 const boxMaterial = new THREE.MeshStandardMaterial({color: 0x00FF00});
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
 box.position.y = 1.5;
+
+box.castShadow = true
 
 // grid helper
 const gridHelper = new THREE.GridHelper();
@@ -55,6 +60,8 @@ scene.add(ambientLight);
 // directional light
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0x8);
 scene.add(directionalLight);
+directionalLight.position.set(-30, 50, 0);
+directionalLight.castShadow = true;
 
 // dat.gui
 const gui = new dat.GUI();
