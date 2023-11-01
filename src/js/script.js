@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 
 // renderer
 const renderer = new THREE.WebGLRenderer();
@@ -28,6 +29,14 @@ const boxMaterial = new THREE.MeshBasicMaterial({color: 0x00FF00});
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
 
-// linking scene and camera
-renderer.render(scene, camera);
+function animate(time) {
+    // setting the rotation
+    box.rotation.set(time/1000, time/1000, 0);
+
+    // linking scene and camera
+    renderer.render(scene, camera);   
+}
+
+renderer.setAnimationLoop(animate);
+
 
