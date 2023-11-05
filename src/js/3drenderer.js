@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 
 // scene
 const scene = new THREE.Scene();
@@ -13,3 +14,5 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
+// loading 3d model
+const loader = new GLTFLoader();
